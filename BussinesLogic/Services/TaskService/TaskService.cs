@@ -1,4 +1,5 @@
-﻿using DataAccess.Data.NoteRepo;
+﻿using BussinesLogic.TDOs;
+using DataAccess.Data.NoteRepo;
 using DataAccess.Data.TaskRepo;
 using DataAccess.Models;
 
@@ -6,14 +7,13 @@ namespace BussinesLogic.Services.TaskService
 {
     internal class TaskService(ITaskRepository taskRepository) : ITaskService
     {
-        public async Task CreateAsync(long userId, string name, string? description = null, 
-            CancellationToken cancellationToken = default)
+        public async Task CreateAsync(long userId, CreateTaskDto dto, CancellationToken cancellationToken = default)
         {
             var task = new TaskModel()
             {
                 UserId = userId,
-                Name = name,
-                Description = description,
+                Name = dto.Name,
+                Description = dto.Description ?? string.Empty,
                 Status = TaskProgressStauts.NotStarted,
                 Created = DateTime.UtcNow,
                 Updated = DateTime.UtcNow
@@ -42,8 +42,7 @@ namespace BussinesLogic.Services.TaskService
             return task;
         }
 
-        public async Task UpdateByIdAsync(long userId, long itemId, string name,
-            string description, TaskProgressStauts status,
+        public async Task UpdateByIdAsync(long userId, long itemId, UpdateTaskDto dto,
             CancellationToken cancellationToken = default)
         {
             var task = await taskRepository.GetByIdAsync(userId, itemId, cancellationToken);
@@ -51,16 +50,15 @@ namespace BussinesLogic.Services.TaskService
             if (task == null)
                 throw new Exception("Task not found");
 
-            task.Name = name;
-            task.Description = description;
-            task.Status = status;
+            task.Name = dto.Name;
+            task.Description = dto.Description;
+            task.Status = dto.Status;
             task.Updated = DateTime.UtcNow;
 
             await taskRepository.UpdateAsync(task, cancellationToken);
         }
 
-        public async Task PatchByIdAsync(long userId, long itemId, string? name = null, 
-            string? description = null, TaskProgressStauts? status = null, 
+        public async Task PatchByIdAsync(long userId, long itemId, PatchTaskDto dto, 
             CancellationToken cancellationToken = default)
         {
             var task = await taskRepository.GetByIdAsync(userId, itemId, cancellationToken);
@@ -68,14 +66,14 @@ namespace BussinesLogic.Services.TaskService
             if (task == null)
                 throw new Exception("Task not found");
             
-            if (name != null)
-                task.Name = name;
+            if (dto.Name != null)
+                task.Name = dto.Name;
 
-            if (description != null)
-                task.Description = description;
+            if (dto.Description != null)
+                task.Description = dto.Description;
             
-            if (status != null)
-                task.Status = status.Value;
+            if (dto.Status != null)
+                task.Status = dto.Status.Value;
 
             task.Updated = DateTime.UtcNow;
 

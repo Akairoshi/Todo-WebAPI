@@ -8,10 +8,10 @@ namespace WebAPI.Controllers
     [Route("Task")]
     public class TaskController(ITaskService taskService) : ControllerBase
     {
-        [HttpPost]
-        public async Task<IActionResult> CreateAsync([FromBody] CreateTaskDto dto, CancellationToken ct)
+        [HttpPost("{userId:long}")]
+        public async Task<IActionResult> CreateAsync([FromRoute] long userId, [FromBody] CreateTaskDto dto, CancellationToken ct)
         {
-            await taskService.CreateAsync(dto.UserId, dto.Name, dto.Description, ct);
+            await taskService.CreateAsync(userId, dto, ct);
             return NoContent();
         }
 
@@ -31,14 +31,14 @@ namespace WebAPI.Controllers
         [HttpPut("{userId:long}/{id:long}")]
         public async Task<IActionResult> UpdateByIdAsync([FromRoute] long userId, [FromRoute] long id, [FromBody] UpdateTaskDto dto, CancellationToken ct)
         {
-            await taskService.UpdateByIdAsync(userId, id, dto.Name, dto.Description, dto.Status, ct);
+            await taskService.UpdateByIdAsync(userId, id, dto, ct);
             return NoContent();
         }
 
         [HttpPatch("{userId:long}/{id:long}")]
         public async Task<IActionResult> PatchByIdAsync([FromRoute] long userId, [FromRoute] long id, [FromBody] PatchTaskDto dto, CancellationToken ct)
         {
-            await taskService.PatchByIdAsync(userId, id, dto.Name, dto.Description, dto.Status, ct);
+            await taskService.PatchByIdAsync(userId, id, dto, ct);
             return NoContent();
         }
 

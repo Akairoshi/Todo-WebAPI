@@ -8,10 +8,10 @@ namespace WebAPI.Controllers
     [Route("Note")]
     public class NoteController(INoteService noteService) : ControllerBase
     {
-        [HttpPost]
-        public async Task<IActionResult> CreateAsync([FromBody] CreateNoteDto dto, CancellationToken ct)
+        [HttpPost("{userId:long}")]
+        public async Task<IActionResult> CreateAsync([FromRoute] long userId, [FromBody] CreateNoteDto dto, CancellationToken ct)
         {
-            await noteService.CreateAsync(dto.UserId, dto.Name, dto.Text, ct);
+            await noteService.CreateAsync(userId, dto, ct);
             return NoContent();
         }
         [HttpGet("{userId:long}")]
@@ -31,14 +31,14 @@ namespace WebAPI.Controllers
         [HttpPut("{userId:long}/{id:long}")]
         public async Task<IActionResult> UpdateByIdAsync([FromRoute] long userId, [FromRoute] long id, [FromBody] UpdateNoteDto dto, CancellationToken ct)
         {
-            await noteService.UpdateByIdAsync(userId, id, dto.Name, dto.Text, ct);
+            await noteService.UpdateByIdAsync(userId, id, dto, ct);
             return NoContent();
         }
 
         [HttpPatch("{userId:long}/{id:long}")]
         public async Task<IActionResult> PatchByIdAsync([FromRoute] long userId, [FromRoute] long id, [FromBody] PatchNoteDto dto, CancellationToken ct)
         {
-            await noteService.PatchByIdAsync(userId, id, dto.Name, dto.Text, ct);
+            await noteService.PatchByIdAsync(userId, id, dto, ct);
             return NoContent();
         }
 
