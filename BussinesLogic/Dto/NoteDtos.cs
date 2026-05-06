@@ -1,4 +1,4 @@
-﻿namespace BussinesLogic.TDOs
+﻿namespace BussinesLogic.Dtos
 {
     public record CreateNoteDto(string Name, string Text);
     public record UpdateNoteDto(string Name, string Text);

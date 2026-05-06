@@ -1,5 +1,4 @@
-﻿using BussinesLogic.TDOs;
-using DataAccess.Data.NoteRepo;
+﻿using BussinesLogic.Dtos;
 using DataAccess.Data.TaskRepo;
 using DataAccess.Models;
 
@@ -14,7 +13,7 @@ namespace BussinesLogic.Services.TaskService
                 UserId = userId,
                 Name = dto.Name,
                 Description = dto.Description ?? string.Empty,
-                Status = TaskProgressStauts.NotStarted,
+                Status = TaskProgressStatus.NotStarted,
                 Created = DateTime.UtcNow,
                 Updated = DateTime.UtcNow
             };

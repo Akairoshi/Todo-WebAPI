@@ -1,7 +1,6 @@
-﻿using BussinesLogic.TDOs;
+﻿using BussinesLogic.Dtos;
 using DataAccess.Data.NoteRepo;
 using DataAccess.Models;
-using System.Xml;
 
 namespace BussinesLogic.Services.NoteService
 {
