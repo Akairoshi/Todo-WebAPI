@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260424073936_init")]
+    [Migration("20260504084310_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -27,11 +27,11 @@ namespace DataAccess.Migrations
 
             modelBuilder.Entity("DataAccess.Models.NoteModel", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("ItemId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("ItemId"));
 
                     b.Property<DateTime>("Created")
                         .HasColumnType("timestamp with time zone");
@@ -49,18 +49,21 @@ namespace DataAccess.Migrations
                     b.Property<DateTime>("Updated")
                         .HasColumnType("timestamp with time zone");
 
-                    b.HasKey("Id");
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("ItemId");
 
                     b.ToTable("Notes");
                 });
 
             modelBuilder.Entity("DataAccess.Models.TaskModel", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("ItemId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("ItemId"));
 
                     b.Property<DateTime>("Created")
                         .HasColumnType("timestamp with time zone");
@@ -81,7 +84,10 @@ namespace DataAccess.Migrations
                     b.Property<DateTime>("Updated")
                         .HasColumnType("timestamp with time zone");
 
-                    b.HasKey("Id");
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("ItemId");
 
                     b.ToTable("Tasks");
                 });

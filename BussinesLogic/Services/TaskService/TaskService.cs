@@ -1,17 +1,20 @@
-﻿using DataAccess.Data.TaskRepo;
+﻿using DataAccess.Data.NoteRepo;
+using DataAccess.Data.TaskRepo;
 using DataAccess.Models;
 
 namespace BussinesLogic.Services.TaskService
 {
     internal class TaskService(ITaskRepository taskRepository) : ITaskService
     {
-        public async Task CreateAsync(string name, string? description = null, 
+        public async Task CreateAsync(long userId, string name, string? description = null, 
             CancellationToken cancellationToken = default)
         {
             var task = new TaskModel()
             {
+                UserId = userId,
                 Name = name,
                 Description = description,
+                Status = TaskProgressStauts.NotStarted,
                 Created = DateTime.UtcNow,
                 Updated = DateTime.UtcNow
             };
@@ -19,9 +22,9 @@ namespace BussinesLogic.Services.TaskService
             await taskRepository.CreateAsync(task, cancellationToken);
         }
 
-        public async Task DeleteByIdAsync(int id, CancellationToken cancellationToken = default)
+        public async Task DeleteByIdAsync(long userId, long itemId, CancellationToken cancellationToken = default)
         {
-            var task = await taskRepository.GetByIdAsync(id, cancellationToken);
+            var task = await taskRepository.GetByIdAsync(userId, itemId, cancellationToken);
 
             if (task == null)
                 throw new Exception("Task not found");
@@ -29,9 +32,9 @@ namespace BussinesLogic.Services.TaskService
             await taskRepository.DeleteAsync(task, cancellationToken);
         }
 
-        public async Task<TaskModel> GetByIdAsync(int id, CancellationToken cancellationToken = default)
+        public async Task<TaskModel> GetByIdAsync(long userId, long itemId, CancellationToken cancellationToken = default)
         {
-            var task = await taskRepository.GetByIdAsync(id, cancellationToken);
+            var task = await taskRepository.GetByIdAsync(userId, itemId, cancellationToken);
 
             if (task == null)
                 throw new Exception("Task not found");
@@ -39,11 +42,11 @@ namespace BussinesLogic.Services.TaskService
             return task;
         }
 
-        public async Task UpdateByIdAsync(int id, string name,
+        public async Task UpdateByIdAsync(long userId, long itemId, string name,
             string description, TaskProgressStauts status,
             CancellationToken cancellationToken = default)
         {
-            var task = await taskRepository.GetByIdAsync(id, cancellationToken);
+            var task = await taskRepository.GetByIdAsync(userId, itemId, cancellationToken);
 
             if (task == null)
                 throw new Exception("Task not found");
@@ -51,17 +54,16 @@ namespace BussinesLogic.Services.TaskService
             task.Name = name;
             task.Description = description;
             task.Status = status;
-
             task.Updated = DateTime.UtcNow;
 
             await taskRepository.UpdateAsync(task, cancellationToken);
         }
 
-        public async Task PatchByIdAsync(int id, string? name = null, 
+        public async Task PatchByIdAsync(long userId, long itemId, string? name = null, 
             string? description = null, TaskProgressStauts? status = null, 
             CancellationToken cancellationToken = default)
         {
-            var task = await taskRepository.GetByIdAsync(id, cancellationToken);
+            var task = await taskRepository.GetByIdAsync(userId, itemId, cancellationToken);
             
             if (task == null)
                 throw new Exception("Task not found");
@@ -79,6 +81,10 @@ namespace BussinesLogic.Services.TaskService
 
             await taskRepository.UpdateAsync(task, cancellationToken);
         }
+        public async Task<List<TaskModel>> GetAllAsync(long userId, CancellationToken cancellationToken = default)
+        {
+            return await taskRepository.GetAllAsync(userId, cancellationToken);
 
+        }
     }
 }

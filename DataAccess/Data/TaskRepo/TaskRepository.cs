@@ -11,10 +11,9 @@ namespace DataAccess.Data.TaskRepo
             await context.SaveChangesAsync(cancellationToken);
         }
 
-        public async Task<TaskModel?> GetByIdAsync(int id, CancellationToken cancellationToken = default)
+        public async Task<TaskModel?> GetByIdAsync(long userId, long itemId, CancellationToken cancellationToken = default)
         {
-            return await context.Tasks.FirstOrDefaultAsync(x => x.Id == id);
-            
+            return await context.Tasks.FirstOrDefaultAsync(x => x.UserId == userId && x.ItemId == itemId, cancellationToken); 
         }
 
         public async Task<TaskModel?> UpdateAsync(TaskModel task, CancellationToken cancellationToken = default)
@@ -26,6 +25,12 @@ namespace DataAccess.Data.TaskRepo
         {
             context.Tasks.Remove(task);
             await context.SaveChangesAsync(cancellationToken);
+        }
+        public async Task<List<TaskModel>> GetAllAsync(long userId, CancellationToken cancellationToken = default)
+        {
+            return await context.Tasks
+                .Where(x => x.UserId == userId)
+                .ToListAsync(cancellationToken);
         }
     }
 }

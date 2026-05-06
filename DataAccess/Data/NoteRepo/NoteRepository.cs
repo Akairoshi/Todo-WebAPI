@@ -11,22 +11,26 @@ namespace DataAccess.Data.NoteRepo
             await context.SaveChangesAsync(cancellationToken);
         }
 
-        public async Task<NoteModel?> GetByIdAsync(int id, CancellationToken cancellationToken = default)
+        public async Task<NoteModel?> GetByIdAsync(long userId, long itemId, CancellationToken cancellationToken = default)
         {
-            return await context.Notes.FirstOrDefaultAsync(x => x.Id == id);
-            
+            return await context.Notes.FirstOrDefaultAsync(x => x.UserId == userId && x.ItemId == itemId, cancellationToken);
         }
 
         public async Task<NoteModel?> UpdateAsync(NoteModel note, CancellationToken cancellationToken = default)
         {
             await context.SaveChangesAsync(cancellationToken);
-
             return note;
         }
         public async Task DeleteAsync(NoteModel note, CancellationToken cancellationToken = default)
         {
             context.Notes.Remove(note);
             await context.SaveChangesAsync(cancellationToken);
+        }
+        public async Task<List<NoteModel>> GetAllAsync(long userId, CancellationToken cancellationToken = default)
+        {
+            return await context.Notes
+                .Where(x => x.UserId == userId)
+                .ToListAsync(cancellationToken);
         }
     }
 }
