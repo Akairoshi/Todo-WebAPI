@@ -1,49 +1,55 @@
-﻿using BussinesLogic.Services.TaskService;
-using BussinesLogic.Dtos;
+﻿using BussinesLogic.Dtos;
+using BussinesLogic.Services.TaskService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace WebAPI.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("Task")]
     public class TaskController(ITaskService taskService) : ControllerBase
     {
-        [HttpPost("{userId:long}")]
-        public async Task<IActionResult> CreateAsync([FromRoute] long userId, [FromBody] CreateTaskDto dto, CancellationToken ct)
+        [HttpPost]
+        public async Task<IActionResult> CreateAsync([FromBody] CreateTaskDto dto, CancellationToken ct)
         {
+            var userId = Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
             await taskService.CreateAsync(userId, dto, ct);
             return NoContent();
         }
 
-        [HttpGet("{userId:long}/{id:long}")]
-        public async Task<IActionResult> GetByIdAsync([FromRoute] long userId, [FromRoute] long id, CancellationToken ct)
+        [HttpGet("{id:Guid}")]
+        public async Task<IActionResult> GetByIdAsync([FromRoute] Guid id, CancellationToken ct)
         {
+            var userId = Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
             var result = await taskService.GetByIdAsync(userId, id, ct);
             return Ok(result);
         }
-        [HttpGet("{userId:long}")]
-        public async Task<IActionResult> GetAllAsync([FromRoute] long userId, CancellationToken ct)
+        [HttpGet]
+        public async Task<IActionResult> GetAllAsync(CancellationToken ct)
         {
+            var userId = Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
             var result = await taskService.GetAllAsync(userId, ct);
             return Ok(result);
         }
 
-        [HttpPut("{userId:long}/{id:long}")]
-        public async Task<IActionResult> UpdateByIdAsync([FromRoute] long userId, [FromRoute] long id, [FromBody] UpdateTaskDto dto, CancellationToken ct)
+        [HttpPut("{id:Guid}")]
+        public async Task<IActionResult> UpdateByIdAsync([FromRoute] Guid userId, [FromRoute] Guid id, [FromBody] UpdateTaskDto dto, CancellationToken ct)
         {
             await taskService.UpdateByIdAsync(userId, id, dto, ct);
             return NoContent();
         }
 
-        [HttpPatch("{userId:long}/{id:long}")]
-        public async Task<IActionResult> PatchByIdAsync([FromRoute] long userId, [FromRoute] long id, [FromBody] PatchTaskDto dto, CancellationToken ct)
+        [HttpPatch("{userId:Guid}/{id:Guid}")]
+        public async Task<IActionResult> PatchByIdAsync([FromRoute] Guid userId, [FromRoute] Guid id, [FromBody] PatchTaskDto dto, CancellationToken ct)
         {
             await taskService.PatchByIdAsync(userId, id, dto, ct);
             return NoContent();
         }
 
-        [HttpDelete("{userId:long}/{id:long}")]
-        public async Task<IActionResult> DeleteByIdAsync([FromRoute] long userId, [FromRoute] long id, CancellationToken ct)
+        [HttpDelete("{userId:Guid}/{id:Guid}")]
+        public async Task<IActionResult> DeleteByIdAsync([FromRoute] Guid userId, [FromRoute] Guid id, CancellationToken ct)
         {
             await taskService.DeleteByIdAsync(userId, id, ct);
             return NoContent();

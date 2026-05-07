@@ -5,12 +5,12 @@ namespace BussinesLogic.Services.NoteService
 {
     public interface INoteService
     {
-        Task CreateAsync(long userId, CreateNoteDto dto, CancellationToken cancellationToken = default);
-        Task<NoteModel> GetByIdAsync(long userId, long itemId, CancellationToken cancellation = default);
-        Task PatchByIdAsync(long userId, long itemId, PatchNoteDto dto, CancellationToken cancellationToken = default);
-        Task UpdateByIdAsync(long userId, long itemId, UpdateNoteDto dto, 
+        Task CreateAsync(Guid userId, CreateNoteDto dto, CancellationToken cancellationToken = default);
+        Task<NoteModel> GetByIdAsync(Guid userId, Guid itemId, CancellationToken cancellation = default);
+        Task PatchByIdAsync(Guid userId, Guid itemId, PatchNoteDto dto, CancellationToken cancellationToken = default);
+        Task UpdateByIdAsync(Guid userId, Guid itemId, UpdateNoteDto dto, 
             CancellationToken cancellationToken = default);
-        Task DeleteByIdAsync(long userId, long itemId, CancellationToken cancellationToken = default);
-        Task<List<NoteModel>> GetAllAsync(long userId, CancellationToken cancellationToken = default);
+        Task DeleteByIdAsync(Guid userId, Guid itemId, CancellationToken cancellationToken = default);
+        Task<List<NoteModel>> GetAllAsync(Guid userId, CancellationToken cancellationToken = default);
     }
 }

@@ -2,11 +2,12 @@
 using DataAccess.Data.NoteRepo;
 using DataAccess.Models;
 
+
 namespace BussinesLogic.Services.NoteService
 {
     internal class NoteService(INoteRepository NoteRepository) : INoteService
     {
-        public async Task CreateAsync(long userId, CreateNoteDto dto, CancellationToken cancellationToken = default)
+        public async Task CreateAsync(Guid userId, CreateNoteDto dto, CancellationToken cancellationToken = default)
         {
             var Note = new NoteModel()
             {
@@ -20,7 +21,7 @@ namespace BussinesLogic.Services.NoteService
             await NoteRepository.CreateAsync(Note, cancellationToken);
         }
 
-        public async Task DeleteByIdAsync(long userId, long itemId, CancellationToken cancellationToken = default)
+        public async Task DeleteByIdAsync(Guid userId, Guid itemId, CancellationToken cancellationToken = default)
         {
             var note = await NoteRepository.GetByIdAsync(userId, itemId, cancellationToken);
 
@@ -30,7 +31,7 @@ namespace BussinesLogic.Services.NoteService
             await NoteRepository.DeleteAsync(note, cancellationToken);
         }
 
-        public async Task<NoteModel> GetByIdAsync(long userId, long itemId, CancellationToken cancellationToken = default)
+        public async Task<NoteModel> GetByIdAsync(Guid userId, Guid itemId, CancellationToken cancellationToken = default)
         {
             var note = await NoteRepository.GetByIdAsync(userId, itemId, cancellationToken);
 
@@ -39,7 +40,7 @@ namespace BussinesLogic.Services.NoteService
 
             return note;
         }
-        public async Task PatchByIdAsync(long userId, long itemId, PatchNoteDto dto, CancellationToken cancellationToken = default)
+        public async Task PatchByIdAsync(Guid userId, Guid itemId, PatchNoteDto dto, CancellationToken cancellationToken = default)
         {
             var note = await NoteRepository.GetByIdAsync(userId, itemId, cancellationToken);
 
@@ -56,7 +57,7 @@ namespace BussinesLogic.Services.NoteService
 
             await NoteRepository.UpdateAsync(note, cancellationToken);
         }
-        public async Task UpdateByIdAsync(long userId, long itemId, UpdateNoteDto dto, CancellationToken cancellationToken = default)
+        public async Task UpdateByIdAsync(Guid userId, Guid itemId, UpdateNoteDto dto, CancellationToken cancellationToken = default)
         {
             var note = await NoteRepository.GetByIdAsync(userId, itemId, cancellationToken);
 
@@ -69,7 +70,7 @@ namespace BussinesLogic.Services.NoteService
 
             await NoteRepository.UpdateAsync(note, cancellationToken);
         }
-        public async Task<List<NoteModel>> GetAllAsync(long userId, CancellationToken cancellationToken = default)
+        public async Task<List<NoteModel>> GetAllAsync(Guid userId, CancellationToken cancellationToken = default)
         {
             return await NoteRepository.GetAllAsync(userId, cancellationToken);
         }

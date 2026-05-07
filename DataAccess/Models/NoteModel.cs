@@ -2,8 +2,8 @@
 {
     public class NoteModel
     {
-        public long UserId { get; set; }
-        public long ItemId { get; set; }
+        public Guid UserId { get; set; }
+        public Guid ItemId { get; set; }
         public string Name { get; set; } = string.Empty;
         public string Text { get; set; } = string.Empty;
         public DateTime Created { get; set; }

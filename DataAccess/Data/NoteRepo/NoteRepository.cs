@@ -14,7 +14,7 @@ namespace DataAccess.Data.NoteRepo
             logger.LogInformation("Created note for user {UserId} and item {ItemId}", note.UserId, note.ItemId);
         }
 
-        public async Task<NoteModel?> GetByIdAsync(long userId, long itemId, CancellationToken cancellationToken = default)
+        public async Task<NoteModel?> GetByIdAsync(Guid userId, Guid itemId, CancellationToken cancellationToken = default)
         {
             var note = await context.Notes
                 .FirstOrDefaultAsync(x => x.UserId == userId && x.ItemId == itemId, cancellationToken);
@@ -34,7 +34,7 @@ namespace DataAccess.Data.NoteRepo
             await context.SaveChangesAsync(cancellationToken);
             logger.LogInformation("Deleted note for user {UserId} and item {ItemId}", note.UserId, note.ItemId);
         }
-        public async Task<List<NoteModel>> GetAllAsync(long userId, CancellationToken cancellationToken = default)
+        public async Task<List<NoteModel>> GetAllAsync(Guid userId, CancellationToken cancellationToken = default)
         {
             var notes = await context.Notes
                 .Where(x => x.UserId == userId)

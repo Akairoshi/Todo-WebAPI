@@ -6,7 +6,7 @@ namespace BussinesLogic.Services.TaskService
 {
     internal class TaskService(ITaskRepository taskRepository) : ITaskService
     {
-        public async Task CreateAsync(long userId, CreateTaskDto dto, CancellationToken cancellationToken = default)
+        public async Task CreateAsync(Guid userId, CreateTaskDto dto, CancellationToken cancellationToken = default)
         {
             var task = new TaskModel()
             {
@@ -21,7 +21,7 @@ namespace BussinesLogic.Services.TaskService
             await taskRepository.CreateAsync(task, cancellationToken);
         }
 
-        public async Task DeleteByIdAsync(long userId, long itemId, CancellationToken cancellationToken = default)
+        public async Task DeleteByIdAsync(Guid userId, Guid itemId, CancellationToken cancellationToken = default)
         {
             var task = await taskRepository.GetByIdAsync(userId, itemId, cancellationToken);
 
@@ -31,7 +31,7 @@ namespace BussinesLogic.Services.TaskService
             await taskRepository.DeleteAsync(task, cancellationToken);
         }
 
-        public async Task<TaskModel> GetByIdAsync(long userId, long itemId, CancellationToken cancellationToken = default)
+        public async Task<TaskModel> GetByIdAsync(Guid userId, Guid itemId, CancellationToken cancellationToken = default)
         {
             var task = await taskRepository.GetByIdAsync(userId, itemId, cancellationToken);
 
@@ -41,7 +41,7 @@ namespace BussinesLogic.Services.TaskService
             return task;
         }
 
-        public async Task UpdateByIdAsync(long userId, long itemId, UpdateTaskDto dto,
+        public async Task UpdateByIdAsync(Guid userId, Guid itemId, UpdateTaskDto dto,
             CancellationToken cancellationToken = default)
         {
             var task = await taskRepository.GetByIdAsync(userId, itemId, cancellationToken);
@@ -57,7 +57,7 @@ namespace BussinesLogic.Services.TaskService
             await taskRepository.UpdateAsync(task, cancellationToken);
         }
 
-        public async Task PatchByIdAsync(long userId, long itemId, PatchTaskDto dto, 
+        public async Task PatchByIdAsync(Guid userId, Guid itemId, PatchTaskDto dto, 
             CancellationToken cancellationToken = default)
         {
             var task = await taskRepository.GetByIdAsync(userId, itemId, cancellationToken);
@@ -78,7 +78,7 @@ namespace BussinesLogic.Services.TaskService
 
             await taskRepository.UpdateAsync(task, cancellationToken);
         }
-        public async Task<List<TaskModel>> GetAllAsync(long userId, CancellationToken cancellationToken = default)
+        public async Task<List<TaskModel>> GetAllAsync(Guid userId, CancellationToken cancellationToken = default)
         {
             return await taskRepository.GetAllAsync(userId, cancellationToken);
 

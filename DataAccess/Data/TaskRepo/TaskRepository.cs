@@ -13,7 +13,7 @@ namespace DataAccess.Data.TaskRepo
             logger.LogInformation("Created task for user {UserId} and item {ItemId}", task.UserId, task.ItemId);
         }
 
-        public async Task<TaskModel?> GetByIdAsync(long userId, long itemId, CancellationToken cancellationToken = default)
+        public async Task<TaskModel?> GetByIdAsync(Guid userId, Guid itemId, CancellationToken cancellationToken = default)
         {
             var task = await context.Tasks.FirstOrDefaultAsync(x => x.UserId == userId && x.ItemId == itemId, cancellationToken);
             logger.LogInformation("Retrieved task for user {UserId} and item {ItemId}", userId, itemId);
@@ -32,7 +32,7 @@ namespace DataAccess.Data.TaskRepo
             await context.SaveChangesAsync(cancellationToken);
             logger.LogInformation("Deleted task for user {UserId} and item {ItemId}", task.UserId, task.ItemId);
         }
-        public async Task<List<TaskModel>> GetAllAsync(long userId, CancellationToken cancellationToken = default)
+        public async Task<List<TaskModel>> GetAllAsync(Guid userId, CancellationToken cancellationToken = default)
         {
             var tasks = await context.Tasks
                 .Where(x => x.UserId == userId)

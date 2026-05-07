@@ -1,5 +1,6 @@
 ﻿using DataAccess.Data.NoteRepo;
 using DataAccess.Data.TaskRepo;
+using DataAccess.Data.UserRepo;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,6 +18,7 @@ namespace DataAccess
 
             servicesCollection.AddScoped<INoteRepository, NoteRepository>();
             servicesCollection.AddScoped<ITaskRepository, TaskRepository>();
+            servicesCollection.AddScoped<IUserRepository, UserRepository>();
             servicesCollection.AddDbContext<AppDbContext>(x =>
             {
                 x.UseNpgsql(connectionString);

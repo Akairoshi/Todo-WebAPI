@@ -5,14 +5,14 @@ namespace BussinesLogic.Services.TaskService
 {
     public interface ITaskService
     {
-        Task CreateAsync(long userId, CreateTaskDto dto,
+        Task CreateAsync(Guid userId, CreateTaskDto dto,
                     CancellationToken cancellationToken = default);
-        Task<TaskModel> GetByIdAsync(long userId, long itemId, CancellationToken cancellation = default);
-        Task PatchByIdAsync(long userId, long itemId, PatchTaskDto dto,
+        Task<TaskModel> GetByIdAsync(Guid userId, Guid itemId, CancellationToken cancellation = default);
+        Task PatchByIdAsync(Guid userId, Guid itemId, PatchTaskDto dto,
                     CancellationToken cancellationToken = default);
-        Task UpdateByIdAsync(long userId, long itemId, UpdateTaskDto dto,
+        Task UpdateByIdAsync(Guid userId, Guid itemId, UpdateTaskDto dto,
                     CancellationToken cancellationToken = default);
-        Task DeleteByIdAsync(long userId, long itemId, CancellationToken cancellationToken = default);
-        Task<List<TaskModel>> GetAllAsync(long userId, CancellationToken cancellationToken = default);
+        Task DeleteByIdAsync(Guid userId, Guid itemId, CancellationToken cancellationToken = default);
+        Task<List<TaskModel>> GetAllAsync(Guid userId, CancellationToken cancellationToken = default);
     }
 }

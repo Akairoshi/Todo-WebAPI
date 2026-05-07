@@ -1,5 +1,6 @@
 <Solution>
-  <Project Path="BussinesLogic/BussinesLogic.csproj" />
-  <Project Path="DataAccess/DataAccess.csproj" />
-  <Project Path="WebAPI/WebAPI.csproj" />
+  <Project Path="D:/Projects/csharp projects/TodoWebAPI/Auth/Auth.csproj" Id="cfca2f67-be60-418d-9193-0634d029218e" />
+  <Project Path="D:/Projects/csharp projects/TodoWebAPI/BussinesLogic/BussinesLogic.csproj" />
+  <Project Path="D:/Projects/csharp projects/TodoWebAPI/DataAccess/DataAccess.csproj" />
+  <Project Path="D:/Projects/csharp projects/TodoWebAPI/WebAPI/WebAPI.csproj" />
 </Solution>
