@@ -1,0 +1,25 @@
+info:
+  name: "Put task update "
+  type: http
+  seq: 4
+
+http:
+  method: PUT
+  url: http://localhost:5254/Task/{{noteId}}
+  body:
+    type: json
+    data: |-
+      {
+        "name" : "Test put task update",
+        "description" : "Test put description update",
+        "status" : 1
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

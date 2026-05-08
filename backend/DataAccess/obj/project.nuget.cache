@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zU/Ugt1b3cI=",
+  "dgSpecHash": "oeB5J16ZeeI=",
   "success": true,
-  "projectFilePath": "D:\\Projects\\csharp projects\\TodoApp\\backend\\TodoWebAPI\\DataAccess\\DataAccess.csproj",
+  "projectFilePath": "D:\\Projects\\csharp projects\\TodoApp\\backend\\DataAccess\\DataAccess.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\froms\\.nuget\\packages\\microsoft.entityframeworkcore\\10.0.7\\microsoft.entityframeworkcore.10.0.7.nupkg.sha512",
     "C:\\Users\\froms\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\10.0.7\\microsoft.entityframeworkcore.abstractions.10.0.7.nupkg.sha512",

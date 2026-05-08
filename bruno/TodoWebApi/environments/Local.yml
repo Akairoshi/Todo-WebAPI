@@ -1,2 +1,13 @@
-name: token
+name: Local
 color: "#75c6df"
+variables:
+  - secret: true
+    name: token
+  - name: username
+    value: test_user
+  - name: password
+    value: test_password
+  - secret: true
+    name: noteId
+  - secret: true
+    name: taskId

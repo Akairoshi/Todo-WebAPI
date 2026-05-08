@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8I2CoXsYd5o=",
+  "dgSpecHash": "JiHb4NVQdhA=",
   "success": true,
-  "projectFilePath": "D:\\Projects\\csharp projects\\TodoApp\\backend\\TodoWebAPI\\Auth\\Auth.csproj",
+  "projectFilePath": "D:\\Projects\\csharp projects\\TodoApp\\backend\\Auth\\Auth.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\froms\\.nuget\\packages\\bcrypt.net-next\\4.1.0\\bcrypt.net-next.4.1.0.nupkg.sha512",
     "C:\\Users\\froms\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\10.0.7\\microsoft.aspnetcore.authentication.jwtbearer.10.0.7.nupkg.sha512",

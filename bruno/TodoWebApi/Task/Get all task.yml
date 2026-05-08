@@ -1,0 +1,28 @@
+info:
+  name: Get all task
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: http://localhost:5254/Task
+  body:
+    type: json
+    data: ""
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var tasks = res.body;
+        var random = tasks[Math.floor(Math.random() * tasks.length)];
+        bru.setEnvVar("taskId", random.itemId);
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1089,11 +1089,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\csharp projects\\TodoApp\\backend\\TodoWebAPI\\Auth\\Auth.csproj",
+      "projectUniqueName": "D:\\Projects\\csharp projects\\TodoApp\\backend\\Auth\\Auth.csproj",
       "projectName": "Auth",
-      "projectPath": "D:\\Projects\\csharp projects\\TodoApp\\backend\\TodoWebAPI\\Auth\\Auth.csproj",
+      "projectPath": "D:\\Projects\\csharp projects\\TodoApp\\backend\\Auth\\Auth.csproj",
       "packagesPath": "C:\\Users\\froms\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\csharp projects\\TodoApp\\backend\\TodoWebAPI\\Auth\\obj\\",
+      "outputPath": "D:\\Projects\\csharp projects\\TodoApp\\backend\\Auth\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "D:\\Development\\IDEs\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -1114,8 +1114,8 @@
         "net10.0": {
           "targetAlias": "net10.0",
           "projectReferences": {
-            "D:\\Projects\\csharp projects\\TodoApp\\backend\\TodoWebAPI\\DataAccess\\DataAccess.csproj": {
-              "projectPath": "D:\\Projects\\csharp projects\\TodoApp\\backend\\TodoWebAPI\\DataAccess\\DataAccess.csproj"
+            "D:\\Projects\\csharp projects\\TodoApp\\backend\\DataAccess\\DataAccess.csproj": {
+              "projectPath": "D:\\Projects\\csharp projects\\TodoApp\\backend\\DataAccess\\DataAccess.csproj"
             }
           }
         }

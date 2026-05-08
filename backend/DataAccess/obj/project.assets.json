@@ -703,11 +703,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\csharp projects\\TodoApp\\backend\\TodoWebAPI\\DataAccess\\DataAccess.csproj",
+      "projectUniqueName": "D:\\Projects\\csharp projects\\TodoApp\\backend\\DataAccess\\DataAccess.csproj",
       "projectName": "DataAccess",
-      "projectPath": "D:\\Projects\\csharp projects\\TodoApp\\backend\\TodoWebAPI\\DataAccess\\DataAccess.csproj",
+      "projectPath": "D:\\Projects\\csharp projects\\TodoApp\\backend\\DataAccess\\DataAccess.csproj",
       "packagesPath": "C:\\Users\\froms\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\csharp projects\\TodoApp\\backend\\TodoWebAPI\\DataAccess\\obj\\",
+      "outputPath": "D:\\Projects\\csharp projects\\TodoApp\\backend\\DataAccess\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "D:\\Development\\IDEs\\Microsoft Visual Studio\\Shared\\NuGetPackages"

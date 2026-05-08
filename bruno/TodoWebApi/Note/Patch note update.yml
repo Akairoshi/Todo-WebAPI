@@ -1,0 +1,25 @@
+info:
+  name: Patch note update
+  type: http
+  seq: 5
+
+http:
+  method: PATCH
+  url: http://localhost:5254/Note/{{noteId}}
+  body:
+    type: json
+    data: |-
+      //Возможен null 
+      {
+        "name" : "Test patch note update",
+        "text" : null
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

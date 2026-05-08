@@ -2676,11 +2676,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\csharp projects\\TodoApp\\backend\\TodoWebAPI\\WebAPI\\WebAPI.csproj",
+      "projectUniqueName": "D:\\Projects\\csharp projects\\TodoApp\\backend\\WebAPI\\WebAPI.csproj",
       "projectName": "WebAPI",
-      "projectPath": "D:\\Projects\\csharp projects\\TodoApp\\backend\\TodoWebAPI\\WebAPI\\WebAPI.csproj",
+      "projectPath": "D:\\Projects\\csharp projects\\TodoApp\\backend\\WebAPI\\WebAPI.csproj",
       "packagesPath": "C:\\Users\\froms\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\csharp projects\\TodoApp\\backend\\TodoWebAPI\\WebAPI\\obj\\",
+      "outputPath": "D:\\Projects\\csharp projects\\TodoApp\\backend\\WebAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "D:\\Development\\IDEs\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -2701,14 +2701,14 @@
         "net10.0": {
           "targetAlias": "net10.0",
           "projectReferences": {
-            "D:\\Projects\\csharp projects\\TodoApp\\backend\\TodoWebAPI\\Auth\\Auth.csproj": {
-              "projectPath": "D:\\Projects\\csharp projects\\TodoApp\\backend\\TodoWebAPI\\Auth\\Auth.csproj"
+            "D:\\Projects\\csharp projects\\TodoApp\\backend\\Auth\\Auth.csproj": {
+              "projectPath": "D:\\Projects\\csharp projects\\TodoApp\\backend\\Auth\\Auth.csproj"
             },
-            "D:\\Projects\\csharp projects\\TodoApp\\backend\\TodoWebAPI\\BussinesLogic\\BussinesLogic.csproj": {
-              "projectPath": "D:\\Projects\\csharp projects\\TodoApp\\backend\\TodoWebAPI\\BussinesLogic\\BussinesLogic.csproj"
+            "D:\\Projects\\csharp projects\\TodoApp\\backend\\BussinesLogic\\BussinesLogic.csproj": {
+              "projectPath": "D:\\Projects\\csharp projects\\TodoApp\\backend\\BussinesLogic\\BussinesLogic.csproj"
             },
-            "D:\\Projects\\csharp projects\\TodoApp\\backend\\TodoWebAPI\\DataAccess\\DataAccess.csproj": {
-              "projectPath": "D:\\Projects\\csharp projects\\TodoApp\\backend\\TodoWebAPI\\DataAccess\\DataAccess.csproj"
+            "D:\\Projects\\csharp projects\\TodoApp\\backend\\DataAccess\\DataAccess.csproj": {
+              "projectPath": "D:\\Projects\\csharp projects\\TodoApp\\backend\\DataAccess\\DataAccess.csproj"
             }
           }
         }

@@ -1,0 +1,25 @@
+info:
+  name: Patch task update
+  type: http
+  seq: 5
+
+http:
+  method: PATCH
+  url: http://localhost:5254/Task/{{noteId}}
+  body:
+    type: json
+    data: |-
+      {
+        "name" : "Test patch task update",
+        "description" : null,
+        "status" : null
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

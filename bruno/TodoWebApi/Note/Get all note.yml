@@ -1,0 +1,28 @@
+info:
+  name: Get all note
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: http://localhost:5254/Note
+  body:
+    type: json
+    data: ""
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var notes = res.body;
+        var random = notes[Math.floor(Math.random() * notes.length)];
+        bru.setEnvVar("noteId", random.itemId);
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

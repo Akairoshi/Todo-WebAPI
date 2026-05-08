@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Eoc3AohhFCo=",
+  "dgSpecHash": "HFJVGyWVo5c=",
   "success": true,
-  "projectFilePath": "D:\\Projects\\csharp projects\\TodoApp\\backend\\TodoWebAPI\\BussinesLogic\\BussinesLogic.csproj",
+  "projectFilePath": "D:\\Projects\\csharp projects\\TodoApp\\backend\\BussinesLogic\\BussinesLogic.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\froms\\.nuget\\packages\\microsoft.entityframeworkcore\\10.0.7\\microsoft.entityframeworkcore.10.0.7.nupkg.sha512",
     "C:\\Users\\froms\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\10.0.7\\microsoft.entityframeworkcore.abstractions.10.0.7.nupkg.sha512",

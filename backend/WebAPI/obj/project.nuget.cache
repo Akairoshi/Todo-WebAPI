@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "l7H3UvAJ8bs=",
+  "dgSpecHash": "L1nbmsjchBE=",
   "success": true,
-  "projectFilePath": "D:\\Projects\\csharp projects\\TodoApp\\backend\\TodoWebAPI\\WebAPI\\WebAPI.csproj",
+  "projectFilePath": "D:\\Projects\\csharp projects\\TodoApp\\backend\\WebAPI\\WebAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\froms\\.nuget\\packages\\bcrypt.net-next\\4.1.0\\bcrypt.net-next.4.1.0.nupkg.sha512",
     "C:\\Users\\froms\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
